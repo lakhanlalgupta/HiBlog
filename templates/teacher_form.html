@@ -84,6 +84,7 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
         <select id="subject" name="Subject">
+          <option>Choose subject</option>
           {% for i in subject_list %}
           <option value="{{i.id}}">{{i.name}}</option>
           {% endfor %}
@@ -107,7 +108,7 @@ input[type=submit]:hover {
         <label for="paragraph">Paragraph</label>
       </div>
       <div class="col-75">
-        <textarea id="paragraph" name="Paragraph" placeholder="Write content.." style="height:200px"></textarea>
+        <textarea id="paragraph" name="Paragraph" placeholder="write content.." style="height:200px"></textarea>
       </div>
     </div>
     <div class="row">

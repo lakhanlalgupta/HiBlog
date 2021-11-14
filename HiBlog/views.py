@@ -25,10 +25,17 @@ def teacher(request):
 		heading = request.POST['Heading']
 		subject = request.POST['Subject']
 		paragraph = request.POST['Paragraph']
-		subject_id = NewSubjects.objects.get(id=int(subject))
-		content = Data(heading=heading,paragraph=paragraph,subject=subject_id)
-		content.save()
-		return redirect('/teacher')
+		try:
+			subject_id = NewSubjects.objects.get(id=int(subject))
+		except:
+			return redirect('/teacher')
+		try:
+			content = Data(heading=heading,paragraph=paragraph,subject=subject_id)
+			print(content)
+			content.save()
+			return redirect('/teacher')
+		except:
+			return redirect('/teacher')
 	return render(request, 'teacher_form.html',{'subject_list':subject_list})
 
 
@@ -38,7 +45,7 @@ def new_subject(request):
 		description = request.POST['description']
 		subject_data = NewSubjects(name=new_subject,description=description)
 		subject_data.save()
-		print("Saved")
+		return redirect('/teacher')
 	return render(request, 'new_subject.html')
 
 def testing(request):
