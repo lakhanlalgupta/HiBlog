@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  <title>HiBlog</title>
+  {% include 'header.html' %}
+</head>
+<body>
+  <br>
+  <br>
+<div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">Select subject</div>
+                <div class="list-group list-group-flush">
+                    {% for subject in subjects %}
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'home' %}?subject={{subject.id}}">{{subject.name}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Content</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                {% for key, value in single_subject.items %}
+                <div class="container-fluid">
+                    <h1 class="mt-4">{{key}}</h1>
+                    {% for i in value %}
+                    <p>{{i}}</p>
+                    {% endfor %}
+
+                    <br>
+                </div>
+                {% endfor %}
+
+                
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/main.js"></script>
+      
+
+  {% include 'footer.html' %}
+</body>
+</html>
