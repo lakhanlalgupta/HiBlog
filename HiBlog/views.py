@@ -9,6 +9,7 @@ def home(request):
 
 	if subject_id:
 		single_subject = Data.objects.filter(subject=int(subject_id))
+		subject_name = NewSubjects.objects.get(id=int(subject_id))
 		single_subject_new = {}
 		for i in single_subject:
 			single_subject_new[i.heading] = i.paragraph.split('<>')
@@ -17,7 +18,7 @@ def home(request):
 		single_subject_new = {}
 		for i in single_subject:
 			single_subject_new[i.heading] = i.paragraph.split('<>')
-	return render(request,'home.html',{'subjects':subjects, 'single_subject':single_subject_new})
+	return render(request,'home.html',{'subjects':subjects, 'single_subject':single_subject_new,'subject_name':subject_name})
 
 def teacher(request):
 	subject_list = NewSubjects.objects.all()
