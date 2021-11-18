@@ -6,6 +6,7 @@ from django.conf import settings
 
 # Create your models here.
 class NewSubjects(models.Model):
+	user=models.ForeignKey(User, on_delete=models.CASCADE)
 	name =models.CharField(max_length= 30)
 	description = models.CharField(max_length=200)
 	date_time = models.DateTimeField(auto_now_add=True)
