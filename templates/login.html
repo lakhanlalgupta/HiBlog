@@ -83,7 +83,11 @@ span.psw {
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
-        
+        {% for message in messages %}
+    <span style="color: red;" class="{{ message.tags }}">
+    {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+    </span>
+    {% endfor %}<br><br>
     <button type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -91,7 +95,7 @@ span.psw {
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
+    <a href="/"><button type="button" class="cancelbtn">Cancel</button></a>
     <span class="psw">Forgot <a href="/signup">New at HiBlog?</a></span>
   </div>
 </form>

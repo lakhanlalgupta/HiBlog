@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect, HttpResponse
-
+from django.core.exceptions import SuspiciousOperation
 from .models import Data, NewSubjects, User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 def home(request):
 	subjects = NewSubjects.objects.all()
 	subject_id = request.GET.get('subject')
@@ -81,10 +81,13 @@ def signup(request):
 		uname=request.POST['username']
 		passwd=request.POST['psw']
 		conf_passwd = request.POST['psw_repeat']
-		print(fname,lname,email,uname,passwd,conf_passwd)
-		u=User(first_name=fname,last_name=lname,email=email,username=uname,password=make_password(passwd))
-		u.save()
-		return redirect('/login')
+		try:
+			u=User(first_name=fname,last_name=lname,email=email,username=uname,password=make_password(passwd))
+			u.save()
+			return redirect('/login')
+		except:
+			messages.error(request, 'Username already exists at HiBlog.', extra_tags='safe')
+
 	return render(request,'reg.html')
 
 
@@ -99,9 +102,9 @@ def login_call(request):
 			return redirect('/welcome')
 		else:
 			print("oops,Wrong password!")
-			return HttpResponse("<h1>Wrong Credentials</h1>")
+			messages.error(request, 'Ooops, Wrong username or password.', extra_tags='safe')
 	return render(request, 'login.html')
 
 def logout_call(request):
 	logout(request)
-	return redirect('/login')
+	return redirect('/')
