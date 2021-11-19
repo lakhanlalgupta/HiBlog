@@ -70,9 +70,10 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<h2>You are teacher now!</h2>
-<p>Write your blog in this form whatever you want to teach but keep remember, when admin will approve after that your blog will be live.</p>
-
+<h2>Write your thought at HiBlog</h2>
+<p>Write your blog in following form whatever you want to teach.</p><p>First choose the subject in first row.</p><p>Now, If you want new line insert <> between the sentences or words where you want to click enter button.</p>
+<b>Want add new subject? click </b><button onclick="window.location.href='/new_subject'">Add New</button>
+<br>
 <div class="container">
   <form method="POST">
     {% csrf_token %}

@@ -70,9 +70,11 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<h2>You are teacher now!</h2>
-<p>Write your blog in this form whatever you want to teach but keep remember, when admin will approve after that your blog will be live.</p>
+<h2>Type your interest below.</h2>
+<p>Keep remember, only you can write sub blog or sub topic on your subject.</p>
 
+<b>Already added your subject? click </b><button onclick="window.location.href='/teacher'">Write Blog Instead</button>
+<br>
 <div class="container">
   <form method="POST">
     {% csrf_token %}

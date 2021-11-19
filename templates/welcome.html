@@ -39,18 +39,19 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <br>
-                    <h1><b>{{subject_name.name}}</b></h1><br>
-                    <h4>({{subject_name.description}})</h4>
+                    <h1><b>{{subject_name.name}}</b></h1>
+                    <h5>({{subject_name.description}})</h5>
                     <p>{{subject_name.date_time}}</p>
+                
+                    
                 </div>
                 {% for key, value in single_subject.items %}
                 <div class="container-fluid">
-                    <h2 class="mt-4">{{key}}</h2><br>
+                    <h2 class="mt-4">{{key}}</h2>
                     {% for i in value %}
                     <p>{{i}}</p>
                     {% endfor %}
 
-                    <br>
                 </div>
                 {% endfor %}
 
