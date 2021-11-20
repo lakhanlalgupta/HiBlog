@@ -15,3 +15,4 @@ class Data(models.Model):
 	subject = models.ForeignKey(NewSubjects, on_delete=models.CASCADE)
 	date_time = models.DateTimeField(auto_now_add=True)
 	paragraph = models.CharField(max_length=10000)
+	pic =models.ImageField(null= True, blank=True,upload_to='blogimages/')

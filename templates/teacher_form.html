@@ -72,10 +72,10 @@ input[type=submit]:hover {
 
 <h2>Write your thought at HiBlog</h2>
 <p>Write your blog in following form whatever you want to teach.</p><p>First choose the subject in first row.</p><p>Now, If you want new line insert <> between the sentences or words where you want to click enter button.</p>
-<b>Want add new subject? click </b><button onclick="window.location.href='/new_subject'">Add New</button>
+<b>Want add new subject? click </b><button onclick="window.location.href='/welcome/new_subject/'">Add New</button>
 <br>
 <div class="container">
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
 
@@ -102,6 +102,14 @@ input[type=submit]:hover {
       </div>
     </div>
     
+     <div class="row">
+      <div class="col-25">
+        <label for="image">Select image</label>
+      </div>
+      <div class="col-75">
+        <input type="file" name="pic1" id="pic1" value="pic1" title="pic1">
+      </div>
+    </div>
     
     <div class="row">
       <div class="col-25">
