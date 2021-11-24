@@ -8,6 +8,7 @@ from django.conf import settings
 class NewSubjects(models.Model):
 	user=models.ForeignKey(User, on_delete=models.CASCADE)
 	name =models.CharField(max_length= 30)
+	topic_heading = models.CharField(max_length=500)
 	description = models.CharField(max_length=200)
 	date_time = models.DateTimeField(auto_now_add=True)
 class Data(models.Model):

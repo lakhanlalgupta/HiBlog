@@ -18,8 +18,8 @@ def home(request):
 			single_subject_new[i.pic]=i.pic
 			print(type(i.pic))
 	else:
-		single_subject = Data.objects.filter(subject=5)
-		subject_name = NewSubjects.objects.get(id=5)
+		single_subject = Data.objects.filter(subject=1)
+		subject_name = NewSubjects.objects.get(id=1)
 		single_subject_new = {}
 		for i in single_subject:
 			single_subject_new[i.heading] = i.paragraph.split('<>')

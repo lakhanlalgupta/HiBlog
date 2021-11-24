@@ -21,8 +21,8 @@ def home(request):
 			single_subject_new[i.pic]=i.pic
 			print(i.pic)
 	else:
-		single_subject = Data.objects.filter(subject=5)
-		subject_name = NewSubjects.objects.get(id=5)
+		single_subject = Data.objects.filter(subject=1)
+		subject_name = NewSubjects.objects.get(id=1)
 		single_subject_new = {}
 		for i in single_subject:
 			single_subject_new[i.heading] = i.paragraph.split('<>')
@@ -54,9 +54,10 @@ def new_subject(request):
 	if request.method=='POST':
 		new_subject = request.POST['new_subject']
 		description = request.POST['description']
+		topic_heading = request.POST['topic']
 		user = request.user
 		print(user)
-		subject_data = NewSubjects(user = user,name=new_subject,description=description)
+		subject_data = NewSubjects(user = user,name=new_subject,topic_heading=topic_heading,description=description)
 		subject_data.save()
 		return redirect('/welcome/teacher/')
 		print("Saved")

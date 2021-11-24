@@ -10,6 +10,13 @@
 
   <title>HiBlog</title>
   {% include 'header.html' %}
+  <style>
+        #content{
+    word-wrap: break-word;
+    white-space:pre-wrap;
+}
+
+    </style>
 </head>
 <body>
 <div class="d-flex" id="wrapper">
@@ -37,8 +44,8 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <br>
-                    <h1><b>{{subject_name.name}}</b></h1>
-                    <h5>({{subject_name.description}})</h5>
+                    <h1><b>{{subject_name.topic_heading}}</b></h1>
+                    <h5>{{subject_name.description}}</h5>
                     <p>{{subject_name.date_time}}</p>
                 
                 </div>
@@ -61,7 +68,7 @@
                 </div>
 
                 <div class="container-fluid">
-                    <p>{{i.paragraph}}</p>
+                    <p id="content">{{i.paragraph}}</p>
                     
                 </div>
                  <div class="container-fluid">

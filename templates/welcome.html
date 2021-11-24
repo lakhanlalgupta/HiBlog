@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
   <title>HiBlog</title>
+  <style>
+        #content{
+    word-wrap: break-word;
+    white-space:pre-wrap;
+}
+
+    </style>
   {% include 'WelcomeHeader.html' %}
 </head>
 <body>
@@ -38,15 +45,15 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <br>
-                    <h1><b>{{subject_name.name}}</b></h1>
-                    <h5>({{subject_name.description}})</h5>
+                    <h1><b>{{subject_name.topic_heading}}</b></h1>
+                    <h5>{{subject_name.description}}</h5>
                     <p>{{subject_name.date_time}}</p> 
                 </div>
                 <hr>
                 {% for i in  single_subject_pic %}
                 <div class="container-fluid">
                     <h2 class="mt-4">{{i.heading}}</h2>
-                    <p>{{i.paragraph}}</p>
+                    <p id="content">{{i.paragraph}}</p>
 
                 </div>
 
